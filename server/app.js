@@ -11,7 +11,6 @@ app.get("/health", (req, res) => {
 });
 
 app.post("/api/books", (req, res) => {
-  console.log(book_list.length)
   response = {
     id: book_list.length + 1,
     author: req.body.author,
