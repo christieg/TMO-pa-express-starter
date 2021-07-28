@@ -10,20 +10,9 @@ app.get("/health", (req, res) => {
   res.status(200).send("Don't panic.");
 });
 
-app.post("/api/books", (req, res) => {
-  response = {
-    id: book_list.length + 1,
-    author: req.body.author,
-    title: req.body.title,
-    datePublished: req.body.datePublished
-    };
-  book_list.push(response)
-  res.status(200).send(book_list[response.id-1])
-
-});
 
 app.get("/api/books", (req, res) => {
-book_list.sort((first, second) => {
+  book_list.sort((first, second) => {
     if (first.title > second.title)
     {
       return 1;
@@ -34,8 +23,20 @@ book_list.sort((first, second) => {
     }
     return 0;
   });
+  
+  res.status(200).send(book_list)
+  
+});
 
-  res.status(201).send(book_list)
+app.post("/api/books", (req, res) => {
+  response = {
+    id: book_list.length + 1,
+    author: req.body.author,
+    title: req.body.title,
+    datePublished: req.body.datePublished
+    };
+  book_list.push(response)
+  res.status(201).send(book_list[response.id-1])
 
 });
 
