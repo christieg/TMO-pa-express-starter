@@ -18,7 +18,7 @@ app.post("/api/books", (req, res) => {
     datePublished: req.body.datePublished
     };
   book_list.push(response)
-  res.status(201).send(book_list[response.id-1])
+  res.status(200).send(book_list[response.id-1])
 
 });
 
