@@ -12,7 +12,8 @@ app.get("/health", (req, res) => {
 
 
 app.get("/api/books", (req, res) => {
-  book_list.sort((first, second) => {
+  res.type('json')
+  res.status(200).send(book_list.sort((first, second) => {
     if (first.title > second.title)
     {
       return 1;
@@ -22,9 +23,7 @@ app.get("/api/books", (req, res) => {
       return -1;
     }
     return 0;
-  });
-  
-  res.status(200).send(book_list)
+  }))
   
 });
 
